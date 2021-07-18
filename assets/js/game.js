@@ -4,9 +4,18 @@ var playerAttack = 10;
 var playerMoney = 10;
 
 var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
-var enemyHealth = 50;
+// generate random damage value based on player's attack power
+var damage = randomNumber(playerAttack - 3, playerAttack);
+
+enemyHealth = Math.max(0, enemyHealth - damage);
 var enemyAttack = 12;
 
+// function to generate a random numeric value
+var randomNumber = function(min, max) {
+  var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+  return value;
+};
 // fight function (now with parameter for enemy's name)
 var fight = function(enemyName) {
   while (playerHealth > 0 && enemyHealth > 0) {
@@ -65,9 +74,9 @@ var fight = function(enemyName) {
 };
 
 // function to start a new game
-var startGame = function() {
-  // reset player stats
-  playerHealth = 100;
+  var damage = randomNumber(enemyAttack - 3, enemyAttack);
+
+  playerHealth = Math.max(0, playerHealth - damage);
   playerAttack = 10;
   playerMoney = 10;
 
